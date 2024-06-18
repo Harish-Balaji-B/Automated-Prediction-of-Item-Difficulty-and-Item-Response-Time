@@ -53,3 +53,56 @@ Accurately predicting item difficulty and response time is crucial for developin
 
 ## Experiments and Results
 We ran all seven methods and evaluated them using RMSE [Root Mean Squared Estimation]. The evaluation matric we use is the DummyRegressor Baseline Difficulty and DummyRegressor Baseline Response Time which are given by the organizers of BEA 2024:
+
+![lmao](https://github.com/Harish-Balaji-B/Automated-Prediction-of-Item-Difficulty-and-Item-Response-Time/blob/main/Samples/dummy.png)<br>
+
+The results we got out of our methods are as follows:
+
+![lmao](https://github.com/Harish-Balaji-B/Automated-Prediction-of-Item-Difficulty-and-Item-Response-Time/blob/main/Samples/difficulty.png)<br>
+
+This shows that LLM’s such as BERT and ELECTRA outperform other methods, and is also less than the DummyRegressor
+
+Now for Response Time: <br>
+
+![lmao](https://github.com/Harish-Balaji-B/Automated-Prediction-of-Item-Difficulty-and-Item-Response-Time/blob/main/Samples/response.png)<br>
+
+Here too, the LLM’s dominate as they out-perform other methods and are less than the DummyRegressor.
+
+## Discussions
+Our experiments reveal several interesting findings.
+
+* Firstly,
+  * RT and ELECTRA significantly outperform the baseline Dummy Regressor in both difficulty and response time prediction.
+  * This suggests that these transformer-based models can effectively capture intricate patterns within the data that contribute to these metrics.
+  * Notably, BERT achieves a substantial reduction in response time compared to all other models.
+ 
+* Secondly.
+  * The difficulty scores across most models remain relatively close to the baseline.
+  * This observation implies that the current features might not be sufficiently discriminative for accurately predicting difficulty levels.
+  * Future work will explore advanced feature engineering techniques and data augmentation strategies to address this limitation.
+ 
+* The variance in response time predictions across the different models indicates that specific model architectures capture different aspects of the data relevant to this task.
+
+* BERT’s success highlights its ability to learn complex relationships between input features and response time.
+
+![lmao](https://github.com/Harish-Balaji-B/Automated-Prediction-of-Item-Difficulty-and-Item-Response-Time/blob/main/Samples/comparisson.png)<br>
+
+With respect to Difficulty Prediction, we can infer that,
+
+* Simple NN, LSTM with Attention and LSTM have similar RMSE scores for Difficulty Prediction.
+* Whereas CBOW and GRU have a larger RMSE which makes them ineffective.
+* But BERT and ELECTRA have significantly low RMSE with BERT being the lowest which tells us that in this comparison model, BERT and ELECTRA are suited for Difficulty Prediction.
+
+With respect to Response Time Prediction, we can infer that,
+
+* BERT and CBOW have similar RMSE scores for Response Time,
+* Whereas Simple NN, LSTM with Attention, LSTM, GRU have higher RMSE which makes them ineffective for Response Time prediction.
+* BERT has the lowest REMSE score which tells that in this comparison model, BERT is suited for Response Time Prediction.
+
+## Future Scope
+Several promising avenues exist for extending this research:
+
+* <strong>Feature Engineering and Data Augmentation: </strong> Exploring novel features, such as linguistic complexity metrics and task-specific attributes, could enhance difficulty prediction. Additionally, augmenting the dataset with carefully crafted synthetic examples, especially for challenging tasks, could improve model robustness and generalization ability.
+* <strong>Hyperparameter Optimization and Model Finetuning: </strong> Systematically optimizing hyperparameters for top-performing models like BERT and ELECTRA, potentially through techniques like Bayesian Optimization, could further enhance their performance. Fine-tuning these pre-trained models on a larger, task-specific dataset is also crucial.
+* <strong> Explainable AI: </strong> Employing techniques like attention visualization and feature importance analysis could provide insights into the decision-making process of these complex models, particularly for understanding the factors driving difficulty and response time predictions.
+* <strong>Real-world Deployment and Evaluation: </strong> Ultimately, deploying these models in real-world applications and evaluating their impact on user experience would be crucial. This would involve collecting user feedback, analyzing performance under different conditions, and iteratively improving the models based on real-world insights.
